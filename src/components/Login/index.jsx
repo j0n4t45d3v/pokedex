@@ -17,7 +17,7 @@ export function LoginComponent() {
   const navigate = useNavigate()
 
   function handleClick() {
-    alert(password.current.value);
+    navigate("/home-page")
   }
 
   return (
