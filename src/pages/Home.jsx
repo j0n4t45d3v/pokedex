@@ -1,28 +1,37 @@
 import { useEffect, useState } from 'react';
+import { Header } from '../components/Header';
 import { connectApi, url } from '../services/api-connect';
 
 export function Home() {
-  const [pokemons, setPokemons] = useState([]);
+  const [pokemons, setPokemons] = useState([{}]);
 
-  useEffect(() => {
-    (async () => {
-      for (let i = 1; i < 5; i++) {
-        await connectApi.get(url, `/${i}`).then((res) => {
-          sessionStorage.setItem('list', res.data);
-        });
+  useEffect(()=>{
+    connectApi.get("/pokemon", {
+      params: {
+        limit: 50
       }
-    })();
-  }, []);
-
-  setPokemons(sessionStorage.getItem('list'));
-
-  if (pokemons.length == 0) {
-    return <h1>Error</h1>;
-  }
-
+    })
+    .then((res) => {
+      const response = res.data.results
+      response.map(async e => {
+        connectApi.get(e.url)
+        .then(r => {
+          setPokemons([...pokemons, r.data])
+        })
+      })
+    });
+  },[pokemons])
   return (
     <>
-      <img src={pokemons[0].sprites.front_default} alt="" />
+      <Header/>
+      {pokemons.map(e => {
+        return (
+          <>
+            <p>{e.name}</p>
+          </>
+        )
+
+      })}
     </>
   );
 }

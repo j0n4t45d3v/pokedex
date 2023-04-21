@@ -1,4 +1,4 @@
-let fakeDb = [
+ export let fakeDb = [
   {
     fullName: 'jonatas de lima',
     email: 'jonatas@gmail.com',
