@@ -14,9 +14,9 @@ export function Home() {
         await connectApi.get(`/pokemon/${i + 1}`).then((res) => {
           const response = res.data;
 
-          if(response.id in pokemons){
-            return
-          }else{
+          if (response.id in pokemons) {
+            return;
+          } else {
             setPokemons([response, ...pokemons]);
           }
         });
@@ -30,7 +30,6 @@ export function Home() {
       <div style={{ width: '60%' }}>
         {pokemons.map((e, index) => {
           let image = e.sprites?.other.dream_world.front_default;
-          console.log(e.sprites?.other.dream_world.front_default);
           return (
             <div key={index}>
               <img src={image} alt="" />
