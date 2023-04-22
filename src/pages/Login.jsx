@@ -5,7 +5,7 @@ export function Login() {
   async function login(email, password) {
     const user = await getUser(email, password);
     console.log(user);
-    localStorage.setItem('user', user);
+    localStorage.setItem('user', user.username);
     if(user === undefined){
       return alert("Usuario invalido")
     }

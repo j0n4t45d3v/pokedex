@@ -2,10 +2,11 @@ import { ContainerHeader, IconUser, NameUser } from "./style";
 import userIcon from "../../assets/icon-user-male.jpg"
 
 
-export function Header(){
+// eslint-disable-next-line react/prop-types
+export function Header({nameUser}){
     return(
         <ContainerHeader>
-            <NameUser>Name</NameUser>
+            <NameUser>{nameUser}</NameUser>
             <IconUser src={userIcon}/>
         </ContainerHeader>
     )

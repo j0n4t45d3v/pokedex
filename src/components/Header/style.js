@@ -20,5 +20,6 @@ export const IconUser = styled.img`
 `
 
 export const NameUser = styled.p`
-
+    color: white;
+    font-weight: 700;
 `
