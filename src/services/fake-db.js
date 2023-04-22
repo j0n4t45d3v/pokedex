@@ -1,21 +1,28 @@
- export let fakeDb = [
+let fakeDb = [
   {
+    username: 'jonatas',
     fullName: 'jonatas de lima',
     email: 'jonatas@gmail.com',
-    username: 'jonatas',
     password: 'senha',
   },
 ];
 
+function findUser(email, password) {
+  let user = null;
+  for (let i of fakeDb) {
+    if (i.email == email && i.password == password) {
+      user = i;
+      break;
+    }
+  }
+  return user;
+}
+
 export const insertUser = (user) => {
   fakeDb.push(user);
+  return "OK"
 };
 
 export const getUser = (email, senha) => {
-  for (let i of fakeDb) {
-    if (i.email === email && i.senha === senha) {
-      return i;
-    }
-  }
-  return null;
+  return findUser(email, senha);
 };

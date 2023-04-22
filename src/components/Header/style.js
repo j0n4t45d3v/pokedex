@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const ContainerHeader = styled.header`
-    width: 100vw;
+    position: absolute;
+    top:0;
+    width: 100%;
     height: 70px;
     background-color: #FF4800;
-    justify-content: end;
     display: flex;
+    justify-content: end;
     align-items: center;
     gap: 20px;
 `
