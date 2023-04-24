@@ -1,6 +1,10 @@
+import { ContainerCard } from "./style";
+
 // eslint-disable-next-line react/prop-types
-export function CardPokemon({pokemonImg}){
+export function CardPokemon(){
   return (
-  
+      <ContainerCard>
+
+      </ContainerCard>
     )
 }

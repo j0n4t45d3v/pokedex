@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { Header } from '../../components/Header';
 import { connectApi } from '../../services/api-connect';
-import { ContaiberHome } from './style';
+import { ContaiberHome, DivCardsPokemons } from './style';
+import { CardPokemon } from '../../components/CardPokemon';
 
 export function Home() {
   const [pokemons, setPokemons] = useState([{}]);
@@ -27,16 +28,38 @@ export function Home() {
   return (
     <ContaiberHome>
       <Header nameUser={name.toLocaleUpperCase()} />
-      <div style={{ width: '60%' }}>
-        {pokemons.map((e, index) => {
-          let image = e.sprites?.other.dream_world.front_default;
-          return (
-            <div key={index}>
-              <img src={image} alt="" />
-            </div>
-          );
-        })}
-      </div>
+      <DivCardsPokemons>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+        <CardPokemon/>
+      </DivCardsPokemons>
     </ContaiberHome>
   );
 }
