@@ -25,8 +25,22 @@ export function Home() {
       <Header nameUser={name.toLocaleUpperCase()} />
       <DivCardsPokemons>
         {pokemons.map((e, index) => {
-          const image = e.sprites?.other.dream_world.front_default;
-          return <CardPokemon key={index} imgPokemon={image} />;
+          let type = [];
+          if (Array.isArray(e.types)) {
+            for (let i of e.types) {
+              type.push(i.type.name);
+            }
+          }
+          const image = e.sprites?.other['official-artwork'].front_default;
+          return (
+            <CardPokemon
+              key={index}
+              imgPokemon={image}
+              pokemonNumber={e.id}
+              pokemonName={e.name}
+              pokemonTypes={type}
+            />
+          );
         })}
       </DivCardsPokemons>
     </ContaiberHome>

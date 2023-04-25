@@ -1,10 +1,27 @@
-import { ContainerCard, ImagePokemon } from "./style";
+import {
+  ContainerCard,
+  ImagePokemon,
+  PokemonName,
+  PokemonNumber,
+  PokemonType,
+} from './style';
 
-// eslint-disable-next-line react/prop-types
-export function CardPokemon({imgPokemon}){
+export function CardPokemon({
+  imgPokemon,
+  pokemonNumber,
+  pokemonName,
+  pokemonTypes,
+}) {
   return (
-      <ContainerCard>
-        <ImagePokemon src={imgPokemon}/>
-      </ContainerCard>
-    )
+    <ContainerCard>
+      <PokemonNumber>#{pokemonNumber}</PokemonNumber>
+      <ImagePokemon src={imgPokemon} />
+      <PokemonName>{pokemonName}</PokemonName>
+      <div style={{ display: 'flex', flexDirection: 'row' , gap: 10}}>
+        {pokemonTypes.map((e, index) => {
+          return <PokemonType key={index}>{e}</PokemonType>;
+        })}
+      </div>
+    </ContainerCard>
+  );
 }

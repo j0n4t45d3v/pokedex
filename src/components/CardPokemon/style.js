@@ -1,12 +1,31 @@
 import styled from "styled-components";
 
 export const ContainerCard = styled.div`
-    min-width: 300px; 
-    height: 400px;
+    width: 200px; 
+    height: 300px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: orange;
     border-radius: 5px;
 `
 
 export const ImagePokemon = styled.img`
+width: 60%;
+`
 
+export const PokemonNumber = styled.h2`
+    align-self: start;
+`
+
+export const PokemonName = styled.p`
+
+`
+export const PokemonType = styled.p`
+    background-color: black;
+    padding: 2px 5px;
+    border-radius: 3px;
+    color: white;
 `
