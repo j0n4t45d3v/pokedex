@@ -41,4 +41,5 @@ export const Favorites = styled.img`
   height: 30px;
   background-color: red;
   border-radius: 100%;
+  transform: rotate(45deg);
 `;
