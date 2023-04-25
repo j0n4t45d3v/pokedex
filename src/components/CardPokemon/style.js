@@ -6,3 +6,7 @@ export const ContainerCard = styled.div`
     background-color: orange;
     border-radius: 5px;
 `
+
+export const ImagePokemon = styled.img`
+
+`
