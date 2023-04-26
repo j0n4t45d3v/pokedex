@@ -5,7 +5,7 @@ export const ContaiberHome = styled.div`
 `;
 
 export const DivCardsPokemons = styled.div`
-  margin-top: 100px;
+  margin-top: 70px;
   margin-bottom: 20px;
   flex-grow: 1;
   display: flex;

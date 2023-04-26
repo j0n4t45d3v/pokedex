@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { CardPokemon } from '../../components/CardPokemon';
 import { Header } from '../../components/Header';
+import { Menu } from '../../components/Menu';
 import { connectApi } from '../../services/api-connect';
 import { ContaiberHome, DivCardsPokemons } from './style';
 
 export function Home() {
   const [pokemons, setPokemons] = useState([{}]);
+  const [statuMenu, setStatuMenu] = useState(false);
   const [name, setName] = useState('');
 
   useEffect(() => {
@@ -22,7 +24,8 @@ export function Home() {
 
   return (
     <ContaiberHome>
-      <Header nameUser={name.toLocaleUpperCase()} />
+      <Header nameUser={name.toLocaleUpperCase()} openMenu={setStatuMenu} statu={statuMenu}/>
+      {statuMenu && <Menu/>}
       <DivCardsPokemons>
         {pokemons.map((e, index) => {
           let type = [];

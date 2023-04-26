@@ -19,6 +19,7 @@ export const ContainerCard = styled.div`
   align-items: center;
   background-color: orange;
   border-radius: 5px;
+  margin-top: 20px;
 `;
 
 export const ImagePokemon = styled.img`
