@@ -4,9 +4,11 @@ import {
   BackgroundRegister,
   ButtonRegister,
   ContainerInput,
+  LinkRegister,
   MainContainerRegister,
   Title,
 } from './style';
+import { useNavigate } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 export function RegisterComponent({ addUser }) {
@@ -14,6 +16,7 @@ export function RegisterComponent({ addUser }) {
   const fullName = useRef('');
   const email = useRef('');
   const password = useRef('');
+  const navigate = useNavigate();
 
   function insertUser() {
     const user = {
@@ -52,6 +55,7 @@ export function RegisterComponent({ addUser }) {
           />
         </ContainerInput>
         <ButtonRegister onClick={insertUser}>Cadastrar</ButtonRegister>
+        <LinkRegister onClick={() => navigate('/')}>login</LinkRegister>
       </MainContainerRegister>
     </BackgroundRegister>
   );

@@ -21,7 +21,7 @@ export const MainContainerLogin = styled.div`
   background-color: white;
   border-radius: 5px;
   padding: 50px 30px;
-  height: 40%;
+  height: 350px;
 `
 
 export const ContainerInput = styled.div`
