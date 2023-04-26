@@ -1,4 +1,13 @@
-import styled from "styled-components";
+import styled, { keyframes } from 'styled-components';
+
+const rotation = keyframes`
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(45deg);
+  }
+`;
 
 export const ContainerCard = styled.div`
   width: 200px;
@@ -17,6 +26,7 @@ export const ImagePokemon = styled.img`
 `;
 
 export const PokemonNumber = styled.h2`
+  margin: 0;
   align-self: start;
 `;
 
@@ -39,7 +49,15 @@ export const Header = styled.div`
 export const Favorites = styled.img`
   width: 30px;
   height: 30px;
-  background-color: red;
   border-radius: 100%;
+  cursor: pointer;
+`;
+export const FavoritesClicked = styled.img`
+  width: 30px;
+  height: 30px;
+  filter: invert(100%);
+  animation: ${rotation} 0.4s 1 linear;
   transform: rotate(45deg);
+  border-radius: 100%;
+  cursor: pointer;
 `;
