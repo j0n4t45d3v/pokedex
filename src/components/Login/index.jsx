@@ -18,10 +18,7 @@ export function LoginComponent({ acess }) {
   const navigate = useNavigate();
 
   function handleClick() {
-    const user = acess(email.current.value, password.current.value);
-    if (user !== null) {
-      navigate('/home-page');
-    }
+    acess(email.current.value, password.current.value);
   }
 
   return (

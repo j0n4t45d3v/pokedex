@@ -4,30 +4,41 @@ import { Header } from '../../components/Header';
 import { Menu } from '../../components/Menu';
 import { connectApi } from '../../services/api-connect';
 import { ContaiberHome, DivCardsPokemons } from './style';
+import { Loading } from '../../components/Loading';
 
+// eslint-disable-next-line react/prop-types
 export function Home() {
   const [pokemons, setPokemons] = useState([{}]);
   const [statuMenu, setStatuMenu] = useState(false);
-  const [name, setName] = useState('');
+  const [user, setUser] = useState({});
 
   useEffect(() => {
-    setName(localStorage.getItem('user'));
-
-    connectApi.get(`/pokemon/?offset=0&limit=50`).then(async (res) => {
-      const results = res.data.results;
-      let pokemonArray = await Promise.all(
-        results.map(async (e) => connectApi.get(e.url).then((res) => res.data))
-      );
-      setPokemons(pokemonArray);
-    });
+    const parseObject = JSON.parse(localStorage.getItem('user'));
+    setUser(parseObject);
+    try {
+      connectApi.get(`/pokemon/?offset=0&limit=50`).then(async (res) => {
+        const results = res.data.results;
+        let pokemonArray = await Promise.all(
+          results.map(async (e) =>
+            connectApi.get(e.url).then((res) => res.data)
+          )
+        );
+        setPokemons(pokemonArray);
+      });
+    } catch (error) {
+      alert(error);
+    }
   }, []);
-
   return (
     <ContaiberHome>
-      <Header nameUser={name.toLocaleUpperCase()} openMenu={setStatuMenu} statu={statuMenu}/>
-      {statuMenu && <Menu/>}
+      <Header
+        nameUser={user.username?.toUpperCase()}
+        openMenu={setStatuMenu}
+        statu={statuMenu}
+      />
+      {statuMenu && <Menu />}
       <DivCardsPokemons>
-        {pokemons.map((e, index) => {
+        {pokemons.length < 50 ? <Loading/> : pokemons.map((e, index) => {
           let type = [];
           if (Array.isArray(e.types)) {
             for (let i of e.types) {
