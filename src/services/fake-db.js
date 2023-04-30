@@ -4,7 +4,7 @@ let fakeDb = [
     fullName: 'jonatas de lima',
     email: 'jonatas@gmail.com',
     password: 'senha',
-    favorites: []
+    favorites: [],
   },
 ];
 
@@ -21,32 +21,40 @@ function findUser(email) {
 
 export const insertUser = (user) => {
   fakeDb.push(user);
-  return "OK"
+  return 'OK';
 };
 
 export const getUser = (email, senha) => {
-  
   const user = findUser(email);
-
-  if(user != null && user.password == senha){
-    return user
+  if (user != null && user.password == senha) {
+    return user;
   }
+  return "usuario não encontrado"
 };
 
 export const getFavorites = (email) => {
   const user = findUser(email);
 
   return user.favorites;
-}
+};
 
 export const addFavorite = (email, value) => {
   const user = findUser(email);
-
-  user.favorites.push(value);
-}
+  console.log(user);
+  if (user != null) {
+    if (user.favorites == null) {
+      user.favorites = []; // cria um novo array de favoritos se não existir
+    }
+    user.favorites.push(value);
+    localStorage.setItem("user", JSON.stringify(user));
+  }else {
+    console.log("O objeto 'user' não foi encontrado ou está definido incorretamente.");
+  }
+};
 
 export const removeFavorite = (email, value) => {
   const user = findUser(email);
 
   user.favorites.pop(value);
-}
+  localStorage.setItem("user", JSON.stringify(user));
+};
