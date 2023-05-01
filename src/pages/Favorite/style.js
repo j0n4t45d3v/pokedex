@@ -34,5 +34,5 @@ export const Button = styled.button`
 export const ContainerCardsFavorites = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 20;
+  gap: 20px;
 `;
