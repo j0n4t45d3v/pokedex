@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import ColorThief from 'colorthief';
+import { useEffect, useState } from 'react';
 import poke from '../../assets/pokebola.png';
 import {
   addFavorite,
@@ -24,6 +25,13 @@ export function CardPokemon({
 }) {
   const [clicked, setClicked] = useState(false);
   const user = JSON.parse(localStorage.getItem('user'));
+  const [bgColor, setBgColor] = useState('');
+
+  useEffect(() => {
+    getDominantColor(imgPokemon).then((color) => {
+      setBgColor(`rgb(${color[0]}, ${color[1]}, ${color[2]})`);
+    });
+  }, [imgPokemon]);
 
   function handleTrue() {
     const user = localStorage.getItem('user');
@@ -43,8 +51,21 @@ export function CardPokemon({
     console.log(getFavorites(parseUser.email));
   }
 
+  function getDominantColor(imageUrl) {
+    const img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.src = imageUrl;
+    return new Promise((resolve) => {
+      img.onload = () => {
+        const colorThief = new ColorThief();
+        const color = colorThief.getColor(img);
+        resolve(color);
+      };
+    });
+  }
+
   return (
-    <ContainerCard>
+    <ContainerCard style={{ backgroundColor: bgColor }}>
       <Header>
         <PokemonNumber>#{pokemonNumber}</PokemonNumber>
         {user.favorites.includes(pokemonNumber) ? (

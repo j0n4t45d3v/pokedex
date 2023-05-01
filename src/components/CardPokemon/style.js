@@ -17,7 +17,7 @@ export const ContainerCard = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  background-color: orange;
+  /* background-color: orange; */
   border-radius: 5px;
   margin-top: 20px;
 `;
@@ -29,9 +29,15 @@ export const ImagePokemon = styled.img`
 export const PokemonNumber = styled.h2`
   margin: 0;
   align-self: start;
+  color: white;
+  text-shadow: 2px 2px 4px black;
 `;
 
-export const PokemonName = styled.p``;
+export const PokemonName = styled.p`
+  color: white;
+  font-size: 20px;
+  text-shadow: 2px 2px 4px black;
+`;
 export const PokemonType = styled.p`
   background-color: black;
   padding: 2px 5px;

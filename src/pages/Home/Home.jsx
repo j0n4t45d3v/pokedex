@@ -5,7 +5,6 @@ import { Menu } from '../../components/Menu';
 import { connectApi } from '../../services/api-connect';
 import { ContaiberHome, DivCardsPokemons } from './style';
 import { Loading } from '../../components/Loading';
-import { getFavorites, getUser } from '../../services/fake-db';
 
 // eslint-disable-next-line react/prop-types
 export function Home() {
