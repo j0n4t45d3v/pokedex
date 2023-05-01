@@ -155,7 +155,7 @@ Error generating stack: `+l.message+`
 `,Hv=W.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 20;
+  gap: 20px;
 `;function Vv(){const e=lr(),t=JSON.parse(localStorage.getItem("user")),[n,r]=L.useState([]);return L.useEffect(()=>{(async()=>{try{const l=await Promise.all(t.favorites.map(async s=>(await Gs.get(`pokemon/${s}`)).data));r(l)}catch(l){console.error(l)}})()},[t.favorites]),$.jsxs(Fv,{children:[$.jsxs(Mv,{children:[$.jsx(Bv,{onClick:()=>e("/home-page"),children:"V"}),$.jsx(Uv,{children:"FAVORITOS"})]}),$.jsx(Hv,{children:n.map((o,l)=>{var c;let s=[];if(Array.isArray(o.types))for(let a of o.types)s.push(a.type.name);const u=(c=o.sprites)==null?void 0:c.other["official-artwork"].front_default;return $.jsx(kp,{imgPokemon:u,pokemonNumber:o.id,pokemonName:o.name,pokemonTypes:s},l)})})]})}const Wv=W.header`
     position: absolute;
     top:0;
