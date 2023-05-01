@@ -1,17 +1,23 @@
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { Favorite } from './pages/Favorite';
+import { Home } from './pages/Home/Home';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
-import { Home } from './pages/Home/Home';
-import { Favorite } from './pages/Favorite';
 export function App() {
-  return (
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    setLoggedIn(!!user);
+  }, [isLoggedIn]);
+
+  return (
     <Routes>
       <Route path="/" element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route path="/home-page" element={<Home/>} />
-      <Route path="/favorite" element={<Favorite/>} />
+      <Route path="/home-page" element={<Home />} />
+      <Route path="/favorite" element={<Favorite />} />
     </Routes>
-
   );
 }

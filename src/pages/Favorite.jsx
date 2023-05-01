@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { CardPokemon } from '../components/CardPokemon';
 import { connectApi } from '../services/api-connect';
+import { CardPokemon } from '../components/CardPokemon';
 
 export function Favorite() {
   const navigate = useNavigate();
@@ -9,19 +9,27 @@ export function Favorite() {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    const array = Promise.all(
-      user.favorites.map((e) => {
-        connectApi.get(e.url).then((res) => res.data);
-      })
-    );
-    setFavorites(array);
-  }, [favorites, user.favorites]);
+    const fetchFavorites = async () => {
+      try {
+        const favoritesArray = await Promise.all(
+          user.favorites.map(async (e) => {
+            const response = await connectApi.get(`pokemon/${e}`);
+            return response.data;
+          })
+        );
+        setFavorites(favoritesArray);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    fetchFavorites();
+  }, [user.favorites]);
 
   return (
     <div style={{ backgroundColor: 'black', width: '100vw', height: '100vh' }}>
-      <button onClick={() => navigate('/home-page')}></button>
+      <button onClick={() => navigate('/home-page')}>Voltar para a Home</button>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
         {favorites.map((e, index) => {
           let type = [];
           if (Array.isArray(e.types)) {
