@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { connectApi } from '../services/api-connect';
-import { CardPokemon } from '../components/CardPokemon';
+import { CardPokemon } from '../../components/CardPokemon';
+import { connectApi } from '../../services/api-connect';
+import { Button, ContainerCardsFavorites, ContainerFavorite, HeaderFavorite, Text } from './style';
 
 export function Favorite() {
   const navigate = useNavigate();
@@ -26,10 +27,13 @@ export function Favorite() {
   }, [user.favorites]);
 
   return (
-    <div style={{ backgroundColor: 'black', width: '100vw', height: '100vh' }}>
-      <button onClick={() => navigate('/home-page')}>Voltar para a Home</button>
+    <ContainerFavorite>
+      <HeaderFavorite>
+      <Button onClick={() => navigate('/home-page')}>V</Button>
+      <Text>FAVORITOS</Text>
+      </HeaderFavorite>
 
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20 }}>
+      <ContainerCardsFavorites>
         {favorites.map((e, index) => {
           let type = [];
           if (Array.isArray(e.types)) {
@@ -48,7 +52,7 @@ export function Favorite() {
             />
           );
         })}
-      </div>
-    </div>
+      </ContainerCardsFavorites>
+    </ContainerFavorite>
   );
 }

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { Favorite } from './pages/Favorite';
+import { Favorite } from './pages/Favorite/Favorite';
 import { Home } from './pages/Home/Home';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
