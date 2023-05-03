@@ -55,6 +55,8 @@ export const addFavorite = (email, value) => {
 export const removeFavorite = (email, value) => {
   const user = findUser(email);
 
-  user.favorites.pop(value);
+  const updatedFavorites = user.favorites.filter((favorite) => favorite !== value);
+  user.favorites = updatedFavorites;
+  
   localStorage.setItem("user", JSON.stringify(user));
 };
