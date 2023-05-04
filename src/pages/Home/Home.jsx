@@ -39,7 +39,7 @@ export function Home() {
         statu={statuMenu}
       />
       {statuMenu && <Menu />}
-      {descriptionStatus && <Description pokemon={e} />}
+
       <DivCardsPokemons>
         {pokemons.length < 50 ? (
           <Loading />
@@ -62,6 +62,7 @@ export function Home() {
                   pokemonTypes={type}
                   description={setDescriptionStatus}
                 />
+                {descriptionStatus && <Description pokemon={e} />}
               </>
             );
           })
