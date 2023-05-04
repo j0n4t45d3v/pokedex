@@ -8,7 +8,6 @@ export function Description({ pokemon }) {
     <MainContainer>
       <Container>
         <TitleName>{pokemon.name}</TitleName>
-
         {pokemon.types.map((e, index) => (
           <Type key={index}>{e.type.name}</Type>
         ))}

@@ -6,9 +6,15 @@ export const MainContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  z-index: 1000000000000000000000000000;
-  height: 100%;
-  width: 100%;
+  z-index: 100000000;
+  height: 80%;
+  width: 80%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  border-radius: 10px;
   background-color: orange;
   &::-webkit-scrollbar {
     width: 0;
