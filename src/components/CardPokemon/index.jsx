@@ -1,11 +1,11 @@
-import ColorThief from "colorthief";
-import { useEffect, useState } from "react";
-import poke from "../../assets/pokebola.png";
+import ColorThief from 'colorthief';
+import { useEffect, useState } from 'react';
+import poke from '../../assets/pokebola.png';
 import {
   addFavorite,
   getFavorites,
   removeFavorite,
-} from "../../services/fake-db";
+} from '../../services/fake-db';
 import {
   ContainerCard,
   Favorites,
@@ -15,28 +15,29 @@ import {
   PokemonName,
   PokemonNumber,
   PokemonType,
-} from "./style";
+} from './style';
 
 export function CardPokemon({
   imgPokemon,
   pokemonNumber,
   pokemonName,
   pokemonTypes,
+  description,
 }) {
   const [clicked, setClicked] = useState(false);
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")));
-  const [bgColor, setBgColor] = useState("");
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
+  const [bgColor, setBgColor] = useState('');
 
   useEffect(() => {
     getDominantColor(imgPokemon).then((color) => {
       setBgColor(`rgb(${color[0]}, ${color[1]}, ${color[2]})`);
     });
 
-    setUser(JSON.parse(localStorage.getItem("user")));
+    setUser(JSON.parse(localStorage.getItem('user')));
   }, [imgPokemon, user]);
 
   function handleTrue() {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem('user');
     const parseUser = JSON.parse(user);
 
     setClicked(true);
@@ -45,7 +46,7 @@ export function CardPokemon({
   }
 
   function handleFalse() {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem('user');
     const parseUser = JSON.parse(user);
 
     setCliced(false);
@@ -55,7 +56,7 @@ export function CardPokemon({
 
   function getDominantColor(imageUrl) {
     const img = new Image();
-    img.crossOrigin = "Anonymous";
+    img.crossOrigin = 'Anonymous';
     img.src = imageUrl;
     return new Promise((resolve) => {
       img.onload = () => {
@@ -66,8 +67,16 @@ export function CardPokemon({
     });
   }
 
+  function descriptionFun() {
+    console.log('clicou');
+    description(true);
+  }
+
   return (
-    <ContainerCard style={{ backgroundColor: bgColor }}>
+    <ContainerCard
+      onClick={descriptionFun}
+      style={{ backgroundColor: bgColor, cursor: 'pointer' }}
+    >
       <Header>
         <PokemonNumber>#{pokemonNumber}</PokemonNumber>
         {user.favorites.includes(pokemonNumber) ? (
@@ -78,7 +87,7 @@ export function CardPokemon({
       </Header>
       <ImagePokemon src={imgPokemon} />
       <PokemonName>{pokemonName}</PokemonName>
-      <div style={{ display: "flex", flexDirection: "row", gap: 10 }}>
+      <div style={{ display: 'flex', flexDirection: 'row', gap: 10 }}>
         {pokemonTypes.map((e, index) => {
           return <PokemonType key={index}>{e}</PokemonType>;
         })}
