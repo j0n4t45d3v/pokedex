@@ -18,7 +18,7 @@ export function Home() {
     const parseObject = JSON.parse(localStorage.getItem('user'));
     setUser(parseObject);
     try {
-      connectApi.get(`/pokemon/?offset=0&limit=50`).then(async (res) => {
+      connectApi.get(`/pokemon/?offset=0&limit=80`).then(async (res) => {
         const results = res.data.results;
         let pokemonArray = await Promise.all(
           results.map(async (e) =>

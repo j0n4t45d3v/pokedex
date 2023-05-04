@@ -1,4 +1,17 @@
-import { Container, Descriptions, DescriptionsLi, MainContainer, PStatus, StatusBar, TitleName, Type } from './style';
+import {
+  Container,
+  Descriptions,
+  DescriptionsLi,
+  Image,
+  MainContainer,
+  NumName,
+  Number,
+  PStatus,
+  StatusBar,
+  TitleName,
+  Type,
+  TypeContainer,
+} from './style';
 
 // eslint-disable-next-line react/prop-types
 export function Description({ pokemon }) {
@@ -7,11 +20,16 @@ export function Description({ pokemon }) {
   return (
     <MainContainer>
       <Container>
-        <TitleName>{pokemon.name}</TitleName>
-        {pokemon.types.map((e, index) => (
-          <Type key={index}>{e.type.name}</Type>
-        ))}
-        <img src={pokemon.sprites?.other['official-artwork'].front_default} />
+        <NumName>
+          <Number>#{pokemon.id}</Number>
+          <TitleName>{pokemon.name}</TitleName>
+        </NumName>
+        <Image src={pokemon.sprites?.other['official-artwork'].front_default} />
+        <TypeContainer>
+          {pokemon.types.map((e, index) => (
+            <Type key={index}>{e.type.name}</Type>
+          ))}
+        </TypeContainer>
       </Container>
       <Descriptions>
         <DescriptionsLi>

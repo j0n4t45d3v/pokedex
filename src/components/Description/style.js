@@ -35,10 +35,34 @@ export const Type = styled.p`
   padding: 3px 5px;
   color: white;
 `;
+export const TypeContainer = styled.div`
+  display: flex;
+  gap: 10px;
+  /* flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%; */
+`;
 
-export const TitleName = styled.h1`
+export const NumName = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
   font-size: 60px;
 `;
+export const TitleName = styled.h1`
+  font-size: 50px;
+  font-weight: 500;
+`;
+export const Number = styled.p`
+  font-size: 60px;
+  font-weight: 500;
+  `;
+
+export const Image = styled.img``;
+
 
 export const StatusBar = styled.div`
   width: 100%;
