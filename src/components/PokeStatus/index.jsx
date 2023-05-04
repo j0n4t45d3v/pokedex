@@ -1,4 +1,4 @@
-import { Container, NumberText, StatusBar, StatusRow, StatusText, StatusValueDiv } from './styles.js';
+/* import { Container, NumberText, StatusBar, StatusRow, StatusText, StatusValueDiv } from './styles.js';
 
 export const PokeStats = ({ poke }) => {
   if (!poke) {
@@ -52,4 +52,4 @@ export const PokeStats = ({ poke }) => {
     </Container>
 
   );
-};
+}; */

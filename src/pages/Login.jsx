@@ -7,12 +7,14 @@ export function Login() {
 
   async function login(email, password) {
     const user = await getUser(email, password);
-    if (user) {
-      const parseJson = JSON.stringify(user);
-      localStorage.setItem('user', parseJson);
-      return navigate('/home-page');
+
+    if (user == 'usuario não encontrado') {
+      return alert('Usuario invalido');
     }
-    return alert('Usuario invalido');
+
+    const parseJson = JSON.stringify(user);
+    localStorage.setItem('user', parseJson);
+    return navigate('/home-page');
   }
 
   return <LoginComponent acess={login} />;

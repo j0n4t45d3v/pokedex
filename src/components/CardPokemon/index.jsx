@@ -33,7 +33,7 @@ export function CardPokemon({
     });
 
     setUser(JSON.parse(localStorage.getItem("user")));
-  }, [imgPokemon, user, setUser]);
+  }, [imgPokemon, user]);
 
   function handleTrue() {
     const user = localStorage.getItem("user");
