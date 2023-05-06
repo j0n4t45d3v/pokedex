@@ -58,6 +58,7 @@ export const Favorites = styled.img`
   height: 30px;
   border-radius: 100%;
   cursor: pointer;
+  z-index: 10000000000;
 `;
 export const FavoritesClicked = styled.img`
   width: 30px;
@@ -67,4 +68,5 @@ export const FavoritesClicked = styled.img`
   transform: rotate(45deg);
   border-radius: 100%;
   cursor: pointer;
+  z-index: 10000000000;
 `;

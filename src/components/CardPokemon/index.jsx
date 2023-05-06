@@ -23,6 +23,8 @@ export function CardPokemon({
   pokemonName,
   pokemonTypes,
   description,
+  objctPoke,
+  objctPokeHome
 }) {
   const [clicked, setClicked] = useState(false);
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
@@ -68,13 +70,13 @@ export function CardPokemon({
   }
 
   function descriptionFun() {
-    console.log('clicou');
     description(true);
+    objctPokeHome(objctPoke);
   }
 
   return (
     <ContainerCard
-      onClick={descriptionFun}
+      onClick={() => descriptionFun(pokemonName)}
       style={{ backgroundColor: bgColor, cursor: 'pointer' }}
     >
       <Header>

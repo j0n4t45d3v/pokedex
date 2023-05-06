@@ -6,7 +6,6 @@ export const MainContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  z-index: 100000000;
   height: 80%;
   width: 80%;
   top: 0;
@@ -19,6 +18,7 @@ export const MainContainer = styled.div`
   &::-webkit-scrollbar {
     width: 0;
   }
+  z-index: 100000000000000000000000000;
 `;
 
 export const Container = styled.div`
@@ -36,6 +36,7 @@ export const Type = styled.p`
   color: white;
 `;
 export const TypeContainer = styled.div`
+  align-self: center;
   display: flex;
   gap: 10px;
   /* flex-direction: row;
@@ -43,6 +44,13 @@ export const TypeContainer = styled.div`
   align-items: center;
   width: 50%; */
 `;
+
+export const Close = styled.p`
+  position: relative;
+  margin: 0;
+  font-size: 50px;
+  cursor: pointer;
+`
 
 export const NumName = styled.div`
   display: flex;
@@ -59,10 +67,11 @@ export const TitleName = styled.h1`
 export const Number = styled.p`
   font-size: 60px;
   font-weight: 500;
-  `;
+`;
 
-export const Image = styled.img``;
-
+export const Image = styled.img`
+  width: 80%;
+`;
 
 export const StatusBar = styled.div`
   width: 100%;

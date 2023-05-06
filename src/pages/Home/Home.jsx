@@ -13,6 +13,7 @@ export function Home() {
   const [statuMenu, setStatuMenu] = useState(false);
   const [user, setUser] = useState({});
   const [descriptionStatus, setDescriptionStatus] = useState(false);
+  const [namePokemon, setNamePokemon] = useState({});
 
   useEffect(() => {
     const parseObject = JSON.parse(localStorage.getItem('user'));
@@ -31,6 +32,9 @@ export function Home() {
       alert(error);
     }
   }, []);
+
+console.log(namePokemon, descriptionStatus);
+
   return (
     <ContaiberHome>
       <Header
@@ -39,7 +43,7 @@ export function Home() {
         statu={statuMenu}
       />
       {statuMenu && <Menu />}
-
+      
       <DivCardsPokemons>
         {pokemons.length < 50 ? (
           <Loading />
@@ -61,12 +65,14 @@ export function Home() {
                   pokemonName={e.name}
                   pokemonTypes={type}
                   description={setDescriptionStatus}
+                  objctPoke={e}
+                  objctPokeHome={setNamePokemon}
                 />
-                {descriptionStatus && <Description pokemon={e} />}
               </>
             );
           })
         )}
+        {descriptionStatus && <Description close={setDescriptionStatus} pokemon={namePokemon} />}
       </DivCardsPokemons>
     </ContaiberHome>
   );

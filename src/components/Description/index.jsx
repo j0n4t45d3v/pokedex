@@ -1,4 +1,5 @@
 import {
+  Close,
   Container,
   Descriptions,
   DescriptionsLi,
@@ -14,11 +15,12 @@ import {
 } from './style';
 
 // eslint-disable-next-line react/prop-types
-export function Description({ pokemon }) {
+export function Description({ pokemon , close}) {
   const status = pokemon.stats;
 
   return (
     <MainContainer>
+      <Close onClick={() =>close(false)}>x</Close>
       <Container>
         <NumName>
           <Number>#{pokemon.id}</Number>
