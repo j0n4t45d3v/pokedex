@@ -20,7 +20,7 @@ export function Description({ pokemon , close}) {
 
   return (
     <MainContainer>
-      <Close onClick={() =>close(false)}>x</Close>
+      <Close onClick={() =>close(null)}>x</Close>
       <Container>
         <NumName>
           <Number>#{pokemon.id}</Number>

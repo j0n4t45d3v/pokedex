@@ -6,7 +6,7 @@ export const MainContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 80%;
+  height: 90%;
   width: 80%;
   top: 0;
   left: 0;
@@ -18,7 +18,7 @@ export const MainContainer = styled.div`
   &::-webkit-scrollbar {
     width: 0;
   }
-  z-index: 100000000000000000000000000;
+  z-index: 1000000000;
 `;
 
 export const Container = styled.div`
@@ -46,7 +46,9 @@ export const TypeContainer = styled.div`
 `;
 
 export const Close = styled.p`
-  position: relative;
+  position: absolute;
+  top: 0px;
+  left: 20px;
   margin: 0;
   font-size: 50px;
   cursor: pointer;
@@ -70,7 +72,7 @@ export const Number = styled.p`
 `;
 
 export const Image = styled.img`
-  width: 80%;
+  width: 70%;
 `;
 
 export const StatusBar = styled.div`

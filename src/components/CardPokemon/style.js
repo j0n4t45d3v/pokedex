@@ -53,12 +53,21 @@ export const Header = styled.div`
   width: 100%;
 `;
 
+export const DivFav = styled.div`
+display: flex;
+justify-content:  center;
+align-items: center;
+  z-index: 1000;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+`;
+
 export const Favorites = styled.img`
   width: 30px;
   height: 30px;
   border-radius: 100%;
-  cursor: pointer;
-  z-index: 10000000000;
+
 `;
 export const FavoritesClicked = styled.img`
   width: 30px;
@@ -67,6 +76,5 @@ export const FavoritesClicked = styled.img`
   animation: ${rotation} 0.4s 1 linear;
   transform: rotate(45deg);
   border-radius: 100%;
-  cursor: pointer;
-  z-index: 10000000000;
+
 `;

@@ -1,13 +1,10 @@
 import ColorThief from 'colorthief';
 import { useEffect, useState } from 'react';
 import poke from '../../assets/pokebola.png';
-import {
-  addFavorite,
-  getFavorites,
-  removeFavorite,
-} from '../../services/fake-db';
+import { addFavorite, removeFavorite } from '../../services/fake-db';
 import {
   ContainerCard,
+  DivFav,
   Favorites,
   FavoritesClicked,
   Header,
@@ -22,11 +19,10 @@ export function CardPokemon({
   pokemonNumber,
   pokemonName,
   pokemonTypes,
-  description,
   objctPoke,
-  objctPokeHome
+  objctPokeHome,
 }) {
-  const [clicked, setClicked] = useState(false);
+  const [clicked, setClicked] = useState('');
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
   const [bgColor, setBgColor] = useState('');
 
@@ -41,19 +37,15 @@ export function CardPokemon({
   function handleTrue() {
     const user = localStorage.getItem('user');
     const parseUser = JSON.parse(user);
-
-    setClicked(true);
+    setClicked('favorite');
     addFavorite(parseUser.email, pokemonNumber);
-    console.log(getFavorites(parseUser.email));
   }
 
   function handleFalse() {
     const user = localStorage.getItem('user');
     const parseUser = JSON.parse(user);
-
-    setCliced(false);
+    setClicked('favorite');
     removeFavorite(parseUser.email, pokemonNumber);
-    console.log(getFavorites(parseUser.email));
   }
 
   function getDominantColor(imageUrl) {
@@ -70,22 +62,24 @@ export function CardPokemon({
   }
 
   function descriptionFun() {
-    description(true);
     objctPokeHome(objctPoke);
   }
 
   return (
     <ContainerCard
-      onClick={() => descriptionFun(pokemonName)}
-      style={{ backgroundColor: bgColor, cursor: 'pointer' }}
+      onClick={() => descriptionFun(pokemonName)} //abre o modal
+      style={{ backgroundColor: bgColor }}
     >
       <Header>
         <PokemonNumber>#{pokemonNumber}</PokemonNumber>
-        {user.favorites.includes(pokemonNumber) ? (
-          <FavoritesClicked src={poke} onClick={handleFalse} />
-        ) : (
-          <Favorites src={poke} onClick={handleTrue} />
-        )}
+
+        <DivFav>
+          {user.favorites?.includes(pokemonNumber) ? (
+            <FavoritesClicked src={poke} onClick={handleFalse} />
+          ) : (
+            <Favorites src={poke} onClick={handleTrue} />
+          )}
+        </DivFav>
       </Header>
       <ImagePokemon src={imgPokemon} />
       <PokemonName>{pokemonName}</PokemonName>

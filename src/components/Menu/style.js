@@ -34,6 +34,7 @@ export const ContainerMenu = styled.div`
   box-shadow: 1px 4px 15px black;
   transition: .3s;
   animation: ${topDown} .01s 1 linear;
+  z-index: 10;
 `;
 
 export const OptionsMenu = styled.p`

@@ -24,6 +24,7 @@ export function RegisterComponent({ addUser }) {
       fullName: fullName.current.value,
       email: email.current.value,
       password: password.current.value,
+      favorites: [],
     };
     addUser(user);
   }

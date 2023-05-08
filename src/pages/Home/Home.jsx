@@ -12,8 +12,7 @@ export function Home() {
   const [pokemons, setPokemons] = useState([{}]);
   const [statuMenu, setStatuMenu] = useState(false);
   const [user, setUser] = useState({});
-  const [descriptionStatus, setDescriptionStatus] = useState(false);
-  const [namePokemon, setNamePokemon] = useState({});
+  const [namePokemon, setNamePokemon] = useState(null);
 
   useEffect(() => {
     const parseObject = JSON.parse(localStorage.getItem('user'));
@@ -33,7 +32,7 @@ export function Home() {
     }
   }, []);
 
-console.log(namePokemon, descriptionStatus);
+console.log(namePokemon);
 
   return (
     <ContaiberHome>
@@ -64,7 +63,6 @@ console.log(namePokemon, descriptionStatus);
                   pokemonNumber={e.id}
                   pokemonName={e.name}
                   pokemonTypes={type}
-                  description={setDescriptionStatus}
                   objctPoke={e}
                   objctPokeHome={setNamePokemon}
                 />
@@ -72,7 +70,7 @@ console.log(namePokemon, descriptionStatus);
             );
           })
         )}
-        {descriptionStatus && <Description close={setDescriptionStatus} pokemon={namePokemon} />}
+        {namePokemon && <Description close={setNamePokemon} pokemon={namePokemon} />}
       </DivCardsPokemons>
     </ContaiberHome>
   );
