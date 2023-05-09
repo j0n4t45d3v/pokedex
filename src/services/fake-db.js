@@ -39,12 +39,11 @@ export const getFavorites = (email) => {
 };
 
 export const addFavorite = (email, value) => {
-  const user = findUser(email);
-  console.log(user);
-  if (user != null) {
-    if (user.favorites == null) {
-      user.favorites = []; // cria um novo array de favoritos se não existir
-    }
+  let user = findUser(email);
+  const localUser = JSON.parse(localStorage.getItem("user"));
+  user = localUser;
+
+  if (user != null && user.favorites != null) {
     user.favorites.push(value);
     localStorage.setItem("user", JSON.stringify(user));
   }else {
@@ -53,7 +52,9 @@ export const addFavorite = (email, value) => {
 };
 
 export const removeFavorite = (email, value) => {
-  const user = findUser(email);
+  let user = findUser(email);
+  const localUser = JSON.parse(localStorage.getItem("user"));
+  user = localUser;
 
   const updatedFavorites = user.favorites.filter((favorite) => favorite !== value);
   user.favorites = updatedFavorites;

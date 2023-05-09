@@ -1,18 +1,14 @@
 import ColorThief from 'colorthief';
-import { useEffect, useState } from 'react';
-import poke from '../../assets/pokebola.png';
-import { addFavorite, removeFavorite } from '../../services/fake-db';
+import { useEffect, useState } from 'react'; '../../services/fake-db';
 import {
   ContainerCard,
-  DivFav,
-  Favorites,
-  FavoritesClicked,
   Header,
   ImagePokemon,
   PokemonName,
   PokemonNumber,
   PokemonType,
 } from './style';
+import { FavoriteButton } from '../FavPoke';
 
 export function CardPokemon({
   imgPokemon,
@@ -30,23 +26,11 @@ export function CardPokemon({
     getDominantColor(imgPokemon).then((color) => {
       setBgColor(`rgb(${color[0]}, ${color[1]}, ${color[2]})`);
     });
+  }, [imgPokemon]);
 
+  useEffect(() => {
     setUser(JSON.parse(localStorage.getItem('user')));
-  }, [imgPokemon, user]);
-
-  function handleTrue() {
-    const user = localStorage.getItem('user');
-    const parseUser = JSON.parse(user);
-    setClicked('favorite');
-    addFavorite(parseUser.email, pokemonNumber);
-  }
-
-  function handleFalse() {
-    const user = localStorage.getItem('user');
-    const parseUser = JSON.parse(user);
-    setClicked('favorite');
-    removeFavorite(parseUser.email, pokemonNumber);
-  }
+  }, [user]);
 
   function getDominantColor(imageUrl) {
     const img = new Image();
@@ -67,19 +51,12 @@ export function CardPokemon({
 
   return (
     <ContainerCard
-      onClick={() => descriptionFun(pokemonName)} //abre o modal
+      onClick={() => descriptionFun(pokemonName)}
       style={{ backgroundColor: bgColor }}
     >
       <Header>
         <PokemonNumber>#{pokemonNumber}</PokemonNumber>
-
-        <DivFav>
-          {user.favorites?.includes(pokemonNumber) ? (
-            <FavoritesClicked src={poke} onClick={handleFalse} />
-          ) : (
-            <Favorites src={poke} onClick={handleTrue} />
-          )}
-        </DivFav>
+        <FavoriteButton number={pokemonNumber} user={user} clicked={setClicked}/>
       </Header>
       <ImagePokemon src={imgPokemon} />
       <PokemonName>{pokemonName}</PokemonName>

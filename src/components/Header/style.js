@@ -10,7 +10,7 @@ export const ContainerHeader = styled.header`
     justify-content: end;
     align-items: center;
     gap: 20px;
-    z-index: 1;
+    z-index: 1000000000;
 `
 
 export const IconUser = styled.img`

@@ -32,8 +32,6 @@ export function Home() {
     }
   }, []);
 
-console.log(namePokemon);
-
   return (
     <ContaiberHome>
       <Header
