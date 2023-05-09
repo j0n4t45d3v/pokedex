@@ -2,7 +2,8 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { CardPokemon } from '../../components/CardPokemon';
 import { connectApi } from '../../services/api-connect';
-import { Button, ContainerCardsFavorites, ContainerFavorite, HeaderFavorite, Text } from './style';
+import { Button, ContainerCardsFavorites, ContainerFavorite, HeaderFavorite, Image, Text } from './style';
+import pokebola from '../../assets/pokebola.png';
 
 export function Favorite() {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ export function Favorite() {
       <Text>FAVORITOS</Text>
       </HeaderFavorite>
 
+      <Image src={pokebola}/>
       <ContainerCardsFavorites>
         {favorites.map((e, index) => {
           let type = [];
