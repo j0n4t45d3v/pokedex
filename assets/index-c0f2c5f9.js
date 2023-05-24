@@ -284,16 +284,16 @@ Error generating stack: `+l.message+`
     font-weight: 700;
 `,a1="/pokedex/assets/icon-user-male-b038d021.jpg";function c1({nameUser:e,openMenu:t,statu:n}){return P.jsxs(l1,{children:[P.jsx(u1,{children:e}),P.jsx(s1,{onClick:()=>t(!n),src:a1})]})}const f1=bu`
   0%, 100%{
-    transform: scale(.5);
+    transform: scale(1);
     left: 0;
-    z-index: 0;
+    z-index: 1;
   }
   25%{
     left: 100px;
   }
   50%{
-    transform: scale(2);
-    z-index: 1;
+    transform: scale(.5);
+    z-index: 0;
   }
   75%{
     left: -100px;
@@ -302,17 +302,17 @@ Error generating stack: `+l.message+`
   0%, 100%{
     transform: scale(.5);
     z-index: 0;
-    left: 0;
+    right: 0;
   }
   25%{
-    left: 100px;
+    right: 100px;
   }
   50%{
     transform: scale(2);
     z-index: 1;
   }
   75%{
-    left: -100px;
+    right: -100px;
   }
 `,p1=F.div`
   height: 100vh;
@@ -321,20 +321,24 @@ Error generating stack: `+l.message+`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 100000;
   position: fixed;
 `,h1=F.img`
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
   background-color: white;
   border-radius: 50%;
   width: 50px;
   animation: ${f1} 2s infinite ease-in-out;
-  animation-delay: .1s;
+
 `,m1=F.img`
-  position: relative;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
   width: 50px;
   animation: ${d1} 2s infinite ease-in-out;
-  animation-delay: .9s;
 `,g1="/pokedex/assets/img-loading-4b29dc50.png",y1="/pokedex/assets/user-male-e4f3d530.png";function v1(){return P.jsxs(p1,{children:[P.jsx(h1,{src:g1}),P.jsx(m1,{src:y1})]})}const w1=F.div`
   position: absolute;
   right: 0;
