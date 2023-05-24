@@ -32,6 +32,10 @@ export function Home() {
     }
   }, []);
 
+  if(pokemons.length < 80){
+    return <Loading />
+  } 
+
   return (
     <ContaiberHome>
       <Header
@@ -42,9 +46,7 @@ export function Home() {
       {statuMenu && <Menu />}
       
       <DivCardsPokemons>
-        {pokemons.length < 50 ? (
-          <Loading />
-        ) : (
+        {
           pokemons.map((e, index) => {
             let type = [];
             if (Array.isArray(e.types)) {
@@ -67,7 +69,7 @@ export function Home() {
               </>
             );
           })
-        )}
+        }
         {namePokemon && <Description close={setNamePokemon} pokemon={namePokemon} />}
       </DivCardsPokemons>
     </ContaiberHome>

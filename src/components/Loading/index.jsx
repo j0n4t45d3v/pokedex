@@ -1,10 +1,12 @@
-import { ContainerLoading, IconLoading } from "./style";
-import icon from "../../assets/img-loading.png"
+import { ContainerLoading, PokeballLoading, UserLoading } from "./style";
+import pokebola from "../../assets/img-loading.png"
+import user from "../../assets/user-male.png"
 
 export function Loading () {
   return (
     <ContainerLoading>
-      <IconLoading src={icon}/>
+      <PokeballLoading src={pokebola}/>
+      <UserLoading src={user}/>
     </ContainerLoading>
   )
 }
