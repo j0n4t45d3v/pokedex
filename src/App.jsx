@@ -5,7 +5,6 @@ import { Favorite } from './pages/Favorite/Favorite';
 import { Home } from './pages/Home/Home';
 import { Login } from './pages/Login';
 import { Register } from './pages/Register';
-import { Loading } from './components/Loading';
 export function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
 

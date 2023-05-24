@@ -34,6 +34,7 @@ export function Home() {
 
   if(pokemons.length < 80){
     return <Loading />
+
   } 
 
   return (
